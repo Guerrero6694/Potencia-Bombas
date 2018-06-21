@@ -1,0 +1,7 @@
+Pasos a seguir para utilizar aplicacion
+1)Descargar el repositorio mediante git clone o descargando el zip
+2)Abrir la carpeta en un editor de texto (Atom,Visual Studio Code,ect)
+3)Abrir el terminal y correr NPM install
+4)Cargar los  cvs en la base de datos MySQL y colocar los credenciales correspondiente en el archivo config.js
+5)Correr nodemon 
+6)Correr ng serve 
