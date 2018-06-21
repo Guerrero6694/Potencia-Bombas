@@ -1,0 +1,93 @@
+<app-navbar-avanzada></app-navbar-avanzada>
+<div class="row main ">
+  <!-- Form para calculo avanzado -->
+
+  <div class="container py-2 mt-2 mb-2">
+
+    <div class="container">
+      <h3 class="mb-4">Tramos de  Tuberia</h3>
+     
+      <form #caudalForm="ngForm">
+
+
+
+        <div class="form-group">
+          <!-- diametro de la tuberia -->
+          <h5>Diametro de la tuberia </h5>
+          <div class="d-flex" >
+          <select class="form-control" id="diametro" required [(ngModel)]="model.diametro" name="diametro">
+            <option *ngFor="let pow of diametros" [value]="pow">{{pow}}</option>
+          </select>
+          <h6 class="my-auto ml-2 mr-4">Pulgada</h6>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <h5>Longitud de la tuberia dentro de la edificación </h5>
+          <div class="d-flex">
+          <input type="number" class="form-control" id="longitud" required [(ngModel)]="model.longitud" name="longitud"  #longitud="ngModel"  #spy>
+          <h6 class="my-auto ml-2 mr-4">Mts</h6>
+        </div>
+      </div>
+      <div [hidden]="longitud.valid "
+                class="alert alert-danger">
+            Es necesario colocar la longitud del tramo para poder agregarlo
+           </div>  
+     
+
+      <div class="form-group">
+          <h5>Rugosidad   Absoluta del material</h5>
+          <div class="d-flex">
+          <input type="number" class="form-control" id="rugosidad" placeholder="Opcional" 
+          [(ngModel)]="model.rugosidad" name="rugosidad"  >
+          <h6 class="my-auto ml-2 mr-4">mm</h6>
+        </div>
+      </div>
+      <h6 class="mt-4 mb-4">Agregue los diferentes tramos de tuberia con su diametro,longitud y rugosidad del material</h6>
+      <div class="alert alert-info mt-4 mb-4 ">
+                                    
+          <strong>*Nota:</strong> De no colocar rugosidad  se asumira  ε=0,0015mm, correspondiente a tuberias plasticas de pvc
+      
+
+
+</div>
+      
+        <button type="button" class="btn btn-info" (click)="agregar(model.diametro,model.longitud,model.rugosidad)" [disabled]="longitud.invalid" >Agregar</button>
+
+        <div class="my-4">
+          <p>Tuberias:</p>
+          <div *ngIf="tuberiasSeleccionadas.length !== 0">
+            <table class="table table-hover bg-light text-dark">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Diametro</th>
+                  <th scope="col">Longitud</th>
+                  <th scope="col">Rugosidad</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tuberia of tuberiasSeleccionadas;let i=index">
+                  <th scope="row">{{tuberia.diametro}}"</th>
+                  <td>{{tuberia.longitud}} mts</td>
+                  <td>{{tuberia.rugosidad}} mm</td>
+                  <td>
+                    <button (click)="eliminar(i)" class="btn btn-outline-danger">Eliminar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngIf="tuberiasSeleccionadas.length === 0">
+            <p class="text-muted">No se ha agregado ninguna tuberia aun.</p>
+          </div>
+        </div>
+
+        <br>
+
+        <button type="button" class="btn btn-primary" (click)="siguiente()">Siguiente</button>
+      </form>
+    </div>
+  </div>
+</div>

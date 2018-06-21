@@ -1,0 +1,61 @@
+<app-navbar-avanzada></app-navbar-avanzada>
+<div class="row main p-4 p-md-3">
+  <!-- Form para calculo avanzado -->          
+  
+  <div class="container py-2 mt-2 mb-2">
+  
+      
+      
+      <div class="container">
+          <h3>Punto más desfavorable</h3>
+          <form #caudalForm="ngForm">
+            <br>
+            <h5>Altura</h5>
+
+            <div class="form-group">
+              
+               <div class="d-flex">
+                <input type="number" class="form-control" id="altura"
+                required [(ngModel)]="model.altura" name="altura" #altura="ngModel"  #spy>
+                <h6 class="my-auto ml-2 mr-4">Mts</h6>
+            </div>
+
+            <label for='altura'>Indique la diferencia de altura entre el tanque y el punto a evaluar</label>
+                <div [hidden]="altura.valid"
+                class="alert alert-danger">
+            Es necesario colocar la altura 
+           </div>  
+              
+              </div>
+              <h5>Presión</h5>
+              <div class="form-group">
+                    
+                    <div class="d-flex">
+                     <input type="number" class="form-control" id="presion"
+                      [(ngModel)]="model.presion" name="presion" placeholder="Opcional"  #presion="ngModel"  #spy>
+                     <h6 class="my-auto ml-2 mr-4">Mts</h6>
+                     
+                 </div>
+                 <label for='presion' >Indique la sumatoria de la presión diferencial y la presión en el punto más desfavorable</label>
+                   
+                   </div>
+                   <div [hidden]="presion.dirty" class="alert alert-info mt-4 mb-4 ">
+                                    
+                        <strong>*Nota:</strong> De no colocar un valor de presión se asumira una de 28mts.                   (Presión diferencial=14mts, Presion punto más desfavorable=14mts)
+    </div>
+      
+              <button (click)="GuardarAltura(model.altura,model.presion)" class="btn btn-primary" [disabled]="altura.invalid">Siguiente </button>
+      
+
+
+              
+                <h3></h3>
+                
+          </form>
+          
+      </div>
+      
+    
+        
+  </div>
+</div>

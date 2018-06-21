@@ -1,0 +1,30 @@
+<app-navbar-avanzada></app-navbar-avanzada>
+
+  <!-- Form para calculo avanzado -->          
+  
+  <div class="container py-5 mt-3 mb-5">
+  
+    
+      <div class="container">
+          <h3>Eficiencia de la bomba</h3>
+
+          <form #caudalForm="ngForm">
+
+            <div class="form-group">
+                  <div class="d-flex">
+                    <select class="form-control" id="eficiencia" required
+                  [(ngModel)]="model.eficiencia" name="eficiencia">
+                 
+                    <option *ngFor="let pow of eficiencia" [value]="pow">{{pow}}</option>
+                
+                   </select>
+                    <h6 class="my-auto ml-2 mr-4">%</h6>
+                  </div>
+            </div>
+
+              <button (click)="calcular(model.eficiencia)" class="btn btn-success" [disabled]="eficiencia.invalid">Calcular</button>
+    
+                <h3></h3>
+          </form>
+      </div> 
+  </div>

@@ -1,0 +1,52 @@
+<app-navbar-avanzada></app-navbar-avanzada>
+<div class="row">
+  <div class="col mx-4 mx-sm-4 mx-md-5 mx-lg-5 mx-xl-5 mt-5 mb-4 ml-4">
+    <h3>Resultados</h3>
+  </div>
+</div>
+
+<div class="row main">
+  <!-- Table -->
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-hover bg-light text-dark">
+        <thead class="thead-light">
+          <tr>
+
+              <th scope="col pr-2">Caudal </th>
+            <th scope="col">Tuberias</th>
+            <th scope="col" >Accesorios</th>
+            <th scope="col">Altura</th>
+            <th scope="col">Presión</th>
+            <th scope="col" >Altura Dinámica Total</th>
+            <th scope="col">Eficiencia</th>
+            <th scope="col">Potencia</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let resultado of resultados; let i=index">
+            <td >{{resultado.caudal*1000}} Lts/s</td>
+            <td  >{{resultado.tuberias}} Mts</td>
+            <td align="center">{{resultado.accesorios}} Mts</td>
+            <td >{{resultado.altura}} Mts</td>
+            <td >{{resultado.presion}} Mts</td>
+            <td align="center">{{resultado.alturatotal}} Mts</td>
+            <td>{{resultado.eficiencia}} %</td>
+            <th align="center" >{{resultado.resultado}} Hp</th>
+  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+  <div class="container py-5 mt-3 mb-5">
+<div class="row main">
+    <div class="form-group col-md-3">
+  <button  type="button" (click)="volver()" class="btn btn-success">Volver a Calcular</button>
+</div>
+<div class="form-group col-md-3">
+  <button  type="button" (click)="home()" class="btn btn-success">Regresar a pagina de inicio</button>
+</div>
+</div>

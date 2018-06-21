@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<div class="row main p-4 p-md-3">
+  <!-- Form para calculo Basica-->          
+
+  <div class="container py-2 mt-3 mb-5">
+  
+      <div class="container">
+          <h3>Caracteristicas del  sistema</h3>
+          <form #caudalForm="ngForm">
+          
+             
+              <br>
+              <h5>Dimensiones</h5>
+              
+              <div class="form-row">
+              
+               <div class="form-group col-md-5">
+                  <label>Largo</label>
+                  <div class="d-flex">
+                    <input type="number" class="form-control" id="largo" required [(ngModel)]="model.largo" name="largo">
+                    <h6 class="my-auto ml-2 mr-4">metros</h6>
+                  </div>
+                </div>
+                
+                <div class="form-group col-md-5">
+                    <label> Ancho</label>
+                    <div class="d-flex">
+                    <input type="number" class="form-control" id="ancho" required
+                     [(ngModel)]="model.ancho" name="ancho">
+                     <h6 class="my-auto ml-2 mr-4">metros</h6>
+                    </div>
+                  </div>
+
+                </div>
+          
+
+           <h5>Altura</h5>
+           <div class="form-row">
+              <div class="form-group col-md-3">
+                <label>Numero de pisos </label>
+                <input type="number" class="form-control" id="pisos"
+                 required
+                 [(ngModel)]="model.pisos" name="pisos">
+               </div>
+
+               <div class="form-group col-md-3">
+                  <label>   Altura entre pisos </label>
+                  <div class="d-flex">
+                  <input type="number" class="form-control" id="altura" placeholder="Opcional"
+                   [(ngModel)]="model.altura" name="altura">
+                  <h6 class="my-auto ml-2 mr-4">metros</h6>
+                </div>
+                </div>
+           </div>
+
+           <h5>Caracteristicas de la tuberia</h5>
+           <div class="form-row">
+           
+           <div class="form-group col-md-5">
+              <!-- diametro de la tuberia -->   
+              <label >Diametro de la tuberia (Opcional) </label>
+              <div class="d-flex">
+              <select class="form-control mr-4" id="diametros" 
+                  [(ngModel)]="tuberia.diametro" name="diametros" placeholder="opcional" >
+                 
+                <option *ngFor="let pow of diametros" [value]="pow">{{pow}}</option>
+                
+              </select>
+              <h6 class="my-auto ml-2 mr-4">pulgadas</h6>
+            </div>
+            </div>
+
+      </div>
+  
+          <button  type="button"   (click)="Calcular(model.largo,model.ancho,model.pisos,model.altura,tuberia.diametro)" class="btn btn-primary">Calcular</button>
+                
+            
+          </form>
+          
+      </div>
+      
+    
+        
+  </div>
+</div>

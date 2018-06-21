@@ -1,0 +1,100 @@
+<app-navbar-avanzada></app-navbar-avanzada>
+<div class="row main ">
+  <!-- Form para calculo avanzado -->          
+
+
+
+
+
+
+
+  
+  <div class="container py-2 mt-2 mb-2">
+  
+      
+      
+      <div class="container">
+          <h3>Accesorios en el Sistema</h3>
+          <form #caudalForm="ngForm">
+            
+            <div class="form-group">
+                <!-- diametro de la tuberia -->   
+                <label >Diametro de la tuberia</label>
+                <div class="d-flex">
+                <select class="form-control" id="diametros" required
+                    [(ngModel)]="model.diametro" name="diametros">
+                   
+                  <option *ngFor="let pow of diametros" [value]="pow">{{pow}}</option>
+                  
+                </select>
+                <h6 class="my-auto ml-2 mr-4">Pulgada</h6>
+              </div>
+              </div>
+            
+              <div class="form-group">
+                  <!-- tipo de ACCESORIO -->   
+                  <label for="tipo">Tipo de Accesorio</label>
+                  <select class="form-control" id="tipo" required
+                      [(ngModel)]="model.tipo" name="tipo">
+                     
+                    <option *ngFor="let pow of tipos" [value]="pow">{{pow}}</option>
+                    
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <!-- tipo de ACCESORIO -->   
+                  <label for="cantidad">Cantidad</label>
+                  <select class="form-control" id="cantidad" required
+                      [(ngModel)]="model.cantidad" name="cantidad">
+                     
+                    <option *ngFor="let pow of cantidad" [value]="pow">{{pow}}</option>
+                    
+                  </select>
+                </div>
+                
+                <button  type="button" (click)="agregarAccesorio(model.tipo,model.diametro,model.cantidad)" class="btn btn-info">Agregar</button>
+
+                <div class="my-4">
+                  <p>Accesorios:</p>
+                  <div *ngIf="accesoriosSeleccionados.length !== 0">
+                   
+                      <table class="table table-hover bg-light text-dark">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Diametro</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let accesorio of accesoriosSeleccionados;let i=index" >
+                            <th  scope="row">{{accesorio.diametro}}"</th>
+                            <td >{{accesorio.tipo}} </td>
+                            <td >{{accesorio.cantidad}}</td>
+                            <td>
+                                <button (click)="eliminar(i)" class="btn btn-outline-danger">Eliminar</button>
+                              </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                   
+                  </div>
+                  <div *ngIf="accesoriosSeleccionados.length === 0">
+                    <p class="text-muted">No se han agregado acesorios aun.</p>
+                  </div>
+                </div>
+
+            
+                        <button  type="button" (click)="siguiente()" class="btn btn-primary">Siguiente</button>
+               
+          </form>
+          
+      </div>
+      
+    
+        
+  </div>
+</div>
